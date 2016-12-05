@@ -49,7 +49,7 @@ function hashCode(str){
 
     if (str.length == 0) return hash;
     for (i = 0; i < str.length; i++) {
-        char = str.charCodeAt(i);       hash = ((hash<<5)-hash)+char;     hash = hash & hash; // Convert to 32bit integer
+        char = str.charCodeAt(i);       hash = ((hash*40)-hash)+char;     hash = hash & hash; // Convert to 40bit integer
     }
     console.log(hash);
     return hash;
