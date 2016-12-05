@@ -26,7 +26,7 @@ function ssTest(){
     }
 }
 
-console.log(navigator.userAgent); // User Agent OK
+/*console.log(navigator.userAgent); // User Agent OK
 //HTTP Accept
 console.log(navigator.plugins); // tableau des plugins
 //Font
@@ -38,6 +38,19 @@ console.log(screen.width + "*"+  screen.height);
 console.log(new Date().getTimezoneOffset());
 console.log(ssTest());//DOM Session Storage
 console.log(lsTest());//DOM Local Storage
-//I.E User data
-console.log(navigator);
+console.log(window.sessionStorage); //I.E User data
+console.log(navigator);*/
 
+var str = navigator+ssTest()+lsTest()+window.sessionStorage+new Date().getTimezoneOffset()+screen.height+screen.width;
+var hash = hashCode(str);
+
+function hashCode(str){
+    var hash = 0;
+
+    if (str.length == 0) return hash;
+    for (i = 0; i < str.length; i++) {
+        char = str.charCodeAt(i);       hash = ((hash<<5)-hash)+char;     hash = hash & hash; // Convert to 32bit integer
+    }
+    console.log(hash);
+    return hash;
+}
